@@ -1,0 +1,21 @@
+{
+  "name": "tivins/app-engine",
+  "description": "app engine",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tivins"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "tivins/userpack": "dev-main",
+    "ext-readline": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tivins\\": "src"
+    }
+  }
+}
