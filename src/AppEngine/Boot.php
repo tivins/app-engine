@@ -4,7 +4,7 @@ namespace Tivins\AppEngine;
 
 use Throwable;
 use Tivins\Core\Code\Exception;
-use Tivins\Core\Http\{ QueryString, Request };
+use Tivins\Core\Http\{HTTP, QueryString, Request};
 use Tivins\Core\{ OptionArg, OptionsArgs };
 use Tivins\Database\Database;
 use Tivins\Database\Exceptions\ConnectionException;
@@ -101,8 +101,7 @@ class Boot
         //
         if (isset($_GET['logout'])) {
             session_destroy();
-            header('Location: /');
-            exit;
+            HTTP::redirect('/');
         }
 
         //
