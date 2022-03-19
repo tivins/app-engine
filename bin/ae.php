@@ -3,12 +3,21 @@
 
 use Tivins\Core\System\FileSys;
 
-require __dir__ . '/../vendor/autoload.php';
+/**
+ * The script is located in /vendor/bin, so autoload is in the parent directory.
+ */
+require __dir__ . '/../autoload.php';
 
+/**
+ *
+ */
 if (!isset($argv[0])) {
     die("Should be ran from CLI.\n");
 }
 
+/**
+ *
+ */
 // if (!str_starts_with($argv[0], 'vendor/bin')) {
 //     die("Should be ran from the root directory of the project.\n");
 // }
