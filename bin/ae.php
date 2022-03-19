@@ -3,10 +3,10 @@
 
 use Tivins\Core\System\FileSys;
 
-/**
- * The script is located in /vendor/bin, so autoload is in the parent directory.
+/*
+ * The script is wrapped by composer, so autoloader is already on.
  */
-require __dir__ . '/../autoload.php';
+require $GLOBALS['_composer_autoload_path'];
 
 /**
  *
@@ -23,6 +23,7 @@ if (!isset($argv[0])) {
 // }
 
 $root = getcwd();
+echo "Current working dir is '$root'." . PHP_EOL;
 
 echo \Tivins\Core\System\Terminal::decorateInfo("Create directories") . PHP_EOL;
 FileSys::mkdir("$root/bin");
