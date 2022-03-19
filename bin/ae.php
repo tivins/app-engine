@@ -42,13 +42,11 @@ file_put_contents("$root/.gitignore",
 );
 
 $body = '<?php' . "\n\n";
-$body .= 'require __dir__ . \'/../vendor/autoload.php\';' . "\n";
-$body .= 'Tivins\AppEngine\Boot::init(__dir__ . \'/..\');' . "\n";
+$body .= 'require __dir__ . \'/../vendor/autoload.php\';' . "\n\n";
+$body .= 'Tivins\AppEngine\Boot::init(__dir__ . \'/..\');' . "\n\n";
 FileSys::writeFile("$root/public/index.php", $body);
+echo \Tivins\Core\System\Terminal::decorateInfo('public/index.php created') . PHP_EOL;
 
-$body = '<?php' . "\n\n";
-$body .= 'require __dir__ . \'/../vendor/autoload.php\';' . "\n";
-$body .= '$settings = \Tivins\AppEngine\AppSettings::getInstance();' . "\n";
-FileSys::writeFile("$root/settings/localhost.settings.php", $body);
+copy(__dir__ . '/../files/models/default.settings.php', "$root/settings/localhost.settings.php");
 
-copy(__dir__ . '/files/models/html.html', "$root/templates/html.html");
+copy(__dir__ . '/../files/models/html.html', "$root/templates/html.html");

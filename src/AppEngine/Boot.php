@@ -93,7 +93,7 @@ class Boot
         //
         // -- Init session
         //
-        session_name($appSettings->sessionName);
+        session_name($appSettings->getSessionName());
         session_start();
 
         //
@@ -112,9 +112,10 @@ class Boot
         //
         // -- Database
         //
-        if ($appSettings->connector) {
+        $connector = $appSettings->getConnector();
+        if ($connector) {
             try {
-                AppData::setDatabase(new Database($appSettings->connector));
+                AppData::setDatabase(new Database($connector));
             } catch (ConnectionException $e) {
                 throw new Exception('Cannot access database', $e->getMessage());
             }
