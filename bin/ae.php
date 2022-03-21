@@ -50,3 +50,4 @@ echo \Tivins\Core\System\Terminal::decorateInfo('public/index.php created') . PH
 copy(__dir__ . '/../files/models/default.settings.php', "$root/settings/localhost.settings.php");
 
 copy(__dir__ . '/../files/models/html.html', "$root/templates/html.html");
+copy(__dir__ . '/../files/models/page_maintenance.html', "$root/templates/page_maintenance.html");

@@ -1,7 +1,9 @@
 <?php
 
+use Tivins\AppEngine\Boot;
+
 require __dir__ . '/../vendor/autoload.php';
 
-Tivins\AppEngine\Boot::init(__dir__ . '/..');
+Boot::init(__dir__ . '/..');
 
 // ...

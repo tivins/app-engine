@@ -51,14 +51,7 @@ class Boot
         //
         // -- Exception handler
         //
-        set_exception_handler(function (Throwable $exception) {
-            if ($exception instanceof Exception) {
-                error_log($exception->getPrivateMessage());
-                die('Fatal error ' . $exception->getMessage());
-            }
-            var_dump($exception);
-            die('Thrown! '.$exception->getMessage());
-        });
+        set_exception_handler(['\\Tivins\\AppEngine\\Engine', 'throwableHandler']);
 
         //
         // -- Main process
