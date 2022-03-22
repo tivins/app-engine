@@ -4,22 +4,24 @@ namespace Tivins\AppEngine;
 
 class HTMLPage
 {
-    public string $file    = 'html.html';
-    public string $title   = '';
-    public string $lang    = 'en';
-    public string $meta    = '';
-    public string $styles  = '';
-    public string $scripts = '';
+    public string $file     = 'html.html';
+    public string $title    = '';
+    public string $lang     = 'en';
+    public string $meta     = '';
+    public string $styles   = '';
+    public string $scripts  = '';
+    public string $inlineJS = '';
 
     public function deliver($pageTpl): never
     {
-        $tpl = Engine::getTemplate($this->file);
+        $inlineJS = $this->inlineJS ? '<script>/*<![CDATA[*/' . $this->inlineJS . '/*]]>*/</script>' : '';
+        $tpl      = Engine::getTemplate($this->file);
         $tpl->setVars([
             'body'    => $pageTpl,
             'title'   => $this->title,
             'styles'  => $this->styles,
             'meta'    => $this->meta,
-            'scripts' => $this->scripts,
+            'scripts' => $this->scripts . $inlineJS,
             'lang'    => $this->lang,
         ]);
         header('Content-Type: text/html; charset=utf-8');
