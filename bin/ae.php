@@ -48,6 +48,8 @@ createFileAndGitAdd("$root/public/index.php", $index);
 copy(__dir__ . '/../files/models/default.settings.php', "$root/settings/localhost.settings.php");
 copyFileAndGitAdd(__dir__ . '/../files/models/html.html', "$root/templates/html.html");
 copyFileAndGitAdd(__dir__ . '/../files/models/page_maintenance.html', "$root/templates/page_maintenance.html");
+copyFileAndGitAdd(__dir__ . '/../files/models/engine.js', "$root/public/assets/engine/engine.js");
+copyFileAndGitAdd(__dir__ . '/../files/models/engine.css', "$root/public/assets/engine/engine.css");
 
 
 function createFileAndGitAdd($dst, $content, bool $append = false)

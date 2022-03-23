@@ -36,4 +36,9 @@ class Engine
         }
         die('Thrown! ' . $exception->getMessage());
     }
+
+    public function getAbsoluteURL($path = '/'): string
+    {
+        return 'http'.(!empty($_SERVER['HTTPS'])?'s':'').'://'.$_SERVER['HTTP_HOST'].$path;
+    }
 }
