@@ -1,0 +1,26 @@
+
+<style>
+    body {
+        background: #eee;
+        line-height: 2;
+    }
+    .rotate {
+        animation: rotation 2s infinite;
+        animation-timing-function: linear;
+    }
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div style="user-select:none;text-align: center;margin-top: 20vh; font-family: sans-serif">
+  <h1 style="font-weight: normal">{{ title }}</h1>
+  <div class="rotate" style="font-size:200%;display: inline-block">🔧️</div>
+  <h2 style="font-weight: normal">Maintenance</h2>
+  <p style="color:#666">We are working to add some cool features !<br>Please, come back in few minutes.</p>
+</div>

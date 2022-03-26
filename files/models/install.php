@@ -9,7 +9,7 @@ require __dir__ . '/../vendor/autoload.php';
 
 $options = new OptionsArgs(); // and add some OptionArg...
 
-Boot::init(__dir__ . '/..', $options); // Project's dir.
+$args = Boot::init(__dir__ . '/..', $options); // Project's dir.
 install(AppData::db());
 
 function install(Database $db) {

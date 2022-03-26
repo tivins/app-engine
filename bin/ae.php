@@ -31,7 +31,7 @@ FileSys::mkdir("$root/bin");
 FileSys::mkdir("$root/src");
 FileSys::mkdir("$root/files/cache");
 FileSys::mkdir("$root/templates");
-FileSys::mkdir("$root/public");
+FileSys::mkdir("$root/public/cache");
 FileSys::mkdir("$root/settings");
 
 $gitIgnore = "/vendor/\n"
@@ -50,6 +50,7 @@ copyFileAndGitAdd(__dir__ . '/../files/models/html.html', "$root/templates/html.
 copyFileAndGitAdd(__dir__ . '/../files/models/page_maintenance.html', "$root/templates/page_maintenance.html");
 copyFileAndGitAdd(__dir__ . '/../files/models/engine.js', "$root/public/assets/engine/engine.js");
 copyFileAndGitAdd(__dir__ . '/../files/models/engine.css', "$root/public/assets/engine/engine.css");
+copyFileAndGitAdd(__dir__ . '/../files/models/.htaccess.css', "$root/public/.htaccess");
 
 
 function createFileAndGitAdd($dst, $content, bool $append = false)

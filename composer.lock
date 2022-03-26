@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91c90a067218ae854b158a74d24d6364",
+    "content-hash": "fe90a6e980590d44a626002a963371c1",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -119,12 +119,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tivins/php-common.git",
-                "reference": "f0f26892d1fd8ccb98b2a6b2512fe061b4701598"
+                "reference": "9934f31f8b388d1097a720ec4cbb0986653991be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tivins/php-common/zipball/f0f26892d1fd8ccb98b2a6b2512fe061b4701598",
-                "reference": "f0f26892d1fd8ccb98b2a6b2512fe061b4701598",
+                "url": "https://api.github.com/repos/tivins/php-common/zipball/9934f31f8b388d1097a720ec4cbb0986653991be",
+                "reference": "9934f31f8b388d1097a720ec4cbb0986653991be",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                 "issues": "https://github.com/tivins/php-common/issues",
                 "source": "https://github.com/tivins/php-common/tree/main"
             },
-            "time": "2022-03-21T21:20:27+00:00"
+            "time": "2022-03-26T13:38:41+00:00"
         },
         {
             "name": "tivins/userpack",
@@ -164,15 +164,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tivins/userpack.git",
-                "reference": "5a1a49ca630b577fee5ad8f2da36012d17d0aa47"
+                "reference": "de0531d197fb2af03f9fbe74b73ddb0bda5aff7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tivins/userpack/zipball/5a1a49ca630b577fee5ad8f2da36012d17d0aa47",
-                "reference": "5a1a49ca630b577fee5ad8f2da36012d17d0aa47",
+                "url": "https://api.github.com/repos/tivins/userpack/zipball/de0531d197fb2af03f9fbe74b73ddb0bda5aff7f",
+                "reference": "de0531d197fb2af03f9fbe74b73ddb0bda5aff7f",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "firebase/php-jwt": "^6",
                 "php": "^8.1",
                 "tivins/database": "dev-main",
@@ -199,7 +200,7 @@
                 "issues": "https://github.com/tivins/userpack/issues",
                 "source": "https://github.com/tivins/userpack/tree/main"
             },
-            "time": "2022-03-23T20:51:28+00:00"
+            "time": "2022-03-26T13:51:11+00:00"
         }
     ],
     "packages-dev": [],
@@ -212,7 +213,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1",
-        "ext-readline": "*"
+        "ext-readline": "*",
+        "ext-imagick": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.2.0"

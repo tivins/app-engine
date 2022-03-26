@@ -32,4 +32,4 @@ function TivinsAppEngine() {
     }
 }
 
-// (new TivinsAppEngine).callService(new URL('http://example.com/api')).then()
+// (new TivinsAppEngine).callService(new URL('http://example.com/api')).then(r => doStuff());

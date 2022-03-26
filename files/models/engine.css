@@ -1,1 +1,88 @@
-body{background: red}
+* {
+    box-sizing: border-box
+}
+
+.d-flex {
+    display: flex
+}
+
+/*
+    FLEX
+*/
+.flex-grow {
+    flex-grow: 1
+}
+
+.flex-no-shrink {
+    flex-shrink: 0
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+/*
+    TEXT
+*/
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.fs-120 {
+    font-size: 120%;
+}
+
+.w-50 {
+    width: 50%
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.p-md {
+    padding: 1rem;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.m-md {
+    margin: 1rem
+}
+
+.mr-md {
+    margin-right: 1rem;
+}
+
+.ml-md {
+    margin-left: 1rem;
+}
+
+.mt-md {
+    margin-top: 1rem;
+}
+
+.mb-md {
+    margin-bottom: 1rem;
+}
+
+.my-md {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.my-lg {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.my-xl {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
