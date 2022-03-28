@@ -8,6 +8,6 @@ class Controller
 
     public static function getPath(string $path): string
     {
-        return '/' . static::SERVICE . '/' . ltrim($path, '/');
+        return Env::getURL(static::SERVICE . '/' . ltrim($path, '/'));
     }
 }

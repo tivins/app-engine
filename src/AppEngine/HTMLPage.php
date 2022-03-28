@@ -68,7 +68,7 @@ class HTMLPage extends Response
         if (file_exists($rootPublic . '/assets/meta/site.webmanifest')) {
             $meta .= '  <link rel="manifest" href="/assets/meta/site.webmanifest">' . "\n";
         }
-        $meta .= '  <meta property="og:url" content="' . Engine::getAbsoluteURL() . '">' . "\n";
+        $meta .= '  <meta property="og:url" content="' . Env::getAbsoluteURL() . '">' . "\n";
         $meta .= '  <meta property="og:site_name" content="' . StringUtil::html(AppData::settings()->getTitle()) . '">';
         // <meta property="og:title" content="Build software better, together">';
         return $meta;

@@ -8,6 +8,7 @@ use Tivins\Core\Http\{HTTP, QueryString, Request};
 use Tivins\Core\{HTML\FormSecurity, Msg, OptionArg, OptionsArgs};
 use Tivins\Database\Database;
 use Tivins\Database\Exceptions\ConnectionException;
+use Tivins\I18n\Language;
 use Tivins\UserPack\UserModule;
 
 /**
@@ -40,6 +41,7 @@ class Boot
      *
      * @return array The result of OptionsArgs parsing (CLI Only) or an empty array.
      *
+     * @throws Exception
      * @see Boot::run()
      */
     public static function init(string $rootDir, ?OptionsArgs $optionsArgs = null): array
@@ -84,6 +86,18 @@ class Boot
         //
         QueryString::parse();
 
+        //
+        // -- Language detection
+        //
+        // -- > by URL
+        if (in_array(QueryString::at(0), array_map(fn($enum) => $enum->value, $appSettings->getAllowedLanguages()))) {
+            $language = Language::tryFrom(QueryString::shift());
+            if (!is_null($language)) {
+                AppData::setLanguage($language);
+            }
+        }
+        // -- > by Browser
+        /* @todo find by accept lang */
 
         //
         // -- Database
@@ -106,7 +120,9 @@ class Boot
         }
 
         AppData::setMessenger(new Msg());
+
         AppData::setHTMLPage(new ($appSettings->getHtmlEngineClass())());
+        AppData::htmlPage()->lang = AppData::getLanguageCode();
 
         //
         // -- Return options values (for CLI)

@@ -4,15 +4,17 @@ namespace Tivins\AppEngine;
 
 use Tivins\Core\Msg;
 use Tivins\Database\Database;
+use Tivins\I18n\Language;
 use Tivins\UserPack\UserModule;
 
 class AppData
 {
     private static Msg         $msg;
     private static AppSettings $settings;
+    private static HTMLPage    $htmlPage;
+    private static Language    $language   = Language::English;
     private static ?Database   $db         = null;
     private static ?UserModule $userModule = null;
-    private static HTMLPage    $htmlPage;
 
     public static function setDatabase(?Database $db): void
     {
@@ -83,6 +85,26 @@ class AppData
         self::$htmlPage = $htmlPage;
     }
 
+    public static function getLanguageCode(): string
+    {
+        return self::getLanguage()->value;
+    }
+
+    /**
+     * @return Language
+     */
+    public static function getLanguage(): Language
+    {
+        return self::$language;
+    }
+
+    /**
+     * @param ?Language $language
+     */
+    public static function setLanguage(Language $language): void
+    {
+        self::$language = $language;
+    }
 
 
 }

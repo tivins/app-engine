@@ -23,6 +23,11 @@ class Engine
     public static function getTemplate(string $name): Tpl
     {
         $tpl = Tpl::fromFile(Env::getTemplatePath($name), true);
+        $tpl->setVars([
+            'SiteTitle'     => AppData::settings()->getTitle(),
+            'SitePunchLine' => AppData::settings()->getPunchLine(),
+            'SiteHomeURL'   => Env::getAbsoluteURL(),
+        ]);
         // $tpl->addFunction('$name', $callback);
         return $tpl;
     }
@@ -66,11 +71,11 @@ class Engine
         } catch (\ReflectionException $e) {
             self::fatalError('404-4');
         }
-        $attrs  = $method->getAttributes(APIAccess::class);
+        $attrs = $method->getAttributes(APIAccess::class);
         if (empty($attrs)) {
             self::fatalError('401-3');
         }
-        $method->invoke(null, );
+        $method->invoke(null,);
     }
 
     public static function fatalError($code): never
@@ -81,17 +86,20 @@ class Engine
 
     public static function addController(string $name, string $class)
     {
-        self::$controllers[trim($name,'/')] = $class;
+        self::$controllers[trim($name, '/')] = $class;
+    }
+
+    /**
+     * @return Controller[]
+     */
+    public static function getControllers(): array
+    {
+        return self::$controllers;
     }
 
     public static function logout(): never
     {
         session_destroy();
         HTTP::redirect('/');
-    }
-
-    public static function getAbsoluteURL($path = '/'): string
-    {
-        return 'http' . (!empty($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . $path;
     }
 }
