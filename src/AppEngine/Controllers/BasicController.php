@@ -18,10 +18,7 @@ class BasicController extends Controller
     {
         $tpl = Engine::getTemplate('page-single.html');
         $tpl->setVars([
-            'title' => AppData::settings()->getTitle(),
-            'titleAlt' => AppData::settings()->getPunchLine(),
             'body' => AppData::msg()->get().'Home '.(UserSession::isAuthenticated()?'yes':'no').'<br><a href="'.UserController::getPath('login').'">sign in</a>',
-            'homeURL' => '/',
         ]);
         AppData::htmlPage()->deliver($tpl);
     }

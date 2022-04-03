@@ -63,6 +63,9 @@
 .ml-md {
     margin-left: 1rem;
 }
+.ml-sm {
+    margin-left: .5rem;
+}
 
 .mt-md {
     margin-top: 1rem;

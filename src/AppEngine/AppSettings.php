@@ -12,7 +12,7 @@ class MailSettings
         private string $host,
         private string $username,
         private string $password,
-        private string $SMTPSecure = 'tls',
+        private string $SMTPSecure/* = 'tls'*/,
         private int    $port)
     {
     }

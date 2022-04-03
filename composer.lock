@@ -147,12 +147,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tivins/database.git",
-                "reference": "5238982862a3eaf1ded11ccb3ce4e8a7d6d606b3"
+                "reference": "7fd3cda9fb122b51fcffcce63c12e93d69a7333f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tivins/database/zipball/5238982862a3eaf1ded11ccb3ce4e8a7d6d606b3",
-                "reference": "5238982862a3eaf1ded11ccb3ce4e8a7d6d606b3",
+                "url": "https://api.github.com/repos/tivins/database/zipball/7fd3cda9fb122b51fcffcce63c12e93d69a7333f",
+                "reference": "7fd3cda9fb122b51fcffcce63c12e93d69a7333f",
                 "shasum": ""
             },
             "require": {
@@ -189,7 +189,7 @@
                 "issues": "https://github.com/tivins/database/issues",
                 "source": "https://github.com/tivins/database/tree/main"
             },
-            "time": "2022-03-23T20:49:20+00:00"
+            "time": "2022-04-01T10:30:00+00:00"
         },
         {
             "name": "tivins/php-common",
@@ -197,12 +197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tivins/php-common.git",
-                "reference": "414a96be6fe52c7a7da8f08ef6a22b2b16acf351"
+                "reference": "2ae510a5e857df2ef42e713497921827229c0b11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tivins/php-common/zipball/414a96be6fe52c7a7da8f08ef6a22b2b16acf351",
-                "reference": "414a96be6fe52c7a7da8f08ef6a22b2b16acf351",
+                "url": "https://api.github.com/repos/tivins/php-common/zipball/2ae510a5e857df2ef42e713497921827229c0b11",
+                "reference": "2ae510a5e857df2ef42e713497921827229c0b11",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
                 "issues": "https://github.com/tivins/php-common/issues",
                 "source": "https://github.com/tivins/php-common/tree/main"
             },
-            "time": "2022-03-27T15:11:28+00:00"
+            "time": "2022-04-01T12:39:52+00:00"
         },
         {
             "name": "tivins/userpack",
@@ -242,12 +242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tivins/userpack.git",
-                "reference": "c8b9a82777301532a57971de95601405f2d4aaf2"
+                "reference": "21a0f04cd997f008d00ac8f0ab7e4b88b4967b6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tivins/userpack/zipball/c8b9a82777301532a57971de95601405f2d4aaf2",
-                "reference": "c8b9a82777301532a57971de95601405f2d4aaf2",
+                "url": "https://api.github.com/repos/tivins/userpack/zipball/21a0f04cd997f008d00ac8f0ab7e4b88b4967b6e",
+                "reference": "21a0f04cd997f008d00ac8f0ab7e4b88b4967b6e",
                 "shasum": ""
             },
             "require": {
@@ -278,7 +278,7 @@
                 "issues": "https://github.com/tivins/userpack/issues",
                 "source": "https://github.com/tivins/userpack/tree/main"
             },
-            "time": "2022-03-27T11:08:31+00:00"
+            "time": "2022-04-01T12:26:37+00:00"
         }
     ],
     "packages-dev": [],
