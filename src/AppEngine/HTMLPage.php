@@ -2,6 +2,8 @@
 
 namespace Tivins\AppEngine;
 
+use Tivins\AppEngine\Cache\PublicCache;
+use Tivins\AppEngine\Controllers\CacheController;
 use Tivins\Core\Http\HTTP;
 use Tivins\Core\Http\Response;
 use Tivins\Core\Http\Status;
@@ -31,7 +33,7 @@ class HTMLPage extends Response
             'body'    => $pageTpl,
             'title'   => $this->title,
             'styles'  => $this->styles,
-            'meta'    => $this->meta . "\n" . $this->getMetaFromFiles(),
+            'meta'    => $this->meta . "\n" . $this->getMetaData(),
             'scripts' => $this->scripts . $inlineJS,
             'lang'    => $this->lang,
         ]);
@@ -41,37 +43,11 @@ class HTMLPage extends Response
         HTTP::sendResponse($this);
     }
 
-    private function getMetaFromFiles(): string
+    private function getMetaData(): string
     {
-        $rootPublic = Env::getPath('/public');
-        $meta       = '';
-        if (file_exists($rootPublic . '/apple-touch-icon.png')) {
-            $meta .= '  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">' . "\n";
-        }
-        if (file_exists($rootPublic . '/favicon-32x32.png')) {
-            $meta .= '  <link rel="image/png" sizes="32x32" href="/favicon-32x32.png">' . "\n";
-        }
-        if (file_exists($rootPublic . '/favicon-16x16.png')) {
-            $meta .= '  <link rel="image/png" sizes="16x16" href="/favicon-16x16.png">' . "\n";
-        }
-
-        if (file_exists($rootPublic . '/assets/meta/favicon-180x180.png')) {
-            $meta .= '  <link rel="apple-touch-icon" sizes="180x180" href="/assets/meta/favicon-180x180.png">' . "\n";
-        }
-        if (file_exists($rootPublic . '/assets/meta/favicon-16x16.png')) {
-            // $meta .= '  <link rel="image/png" sizes="16x16" href="/assets/meta/favicon-16x16.png">' . "\n";
-        }
-        if (file_exists($rootPublic . '/assets/meta/favicon-32x32.png')) {
-            // $meta .= '  <link rel="image/png" sizes="32x32" href="/assets/meta/favicon-32x32.png">' . "\n";
-            $meta .= '  <link type="image/png" rel="icon" href="/assets/meta/favicon-32x32.png">' . "\n";
-        }
-        if (file_exists($rootPublic . '/assets/meta/site.webmanifest')) {
-            $meta .= '  <link rel="manifest" href="/assets/meta/site.webmanifest">' . "\n";
-        }
-        $meta .= '  <meta property="og:url" content="' . Env::getAbsoluteURL() . '">' . "\n";
-        $meta .= '  <meta property="og:site_name" content="' . StringUtil::html(AppData::settings()->getTitle()) . '">';
-        // <meta property="og:title" content="Build software better, together">';
-        return $meta;
+        $tpl = Engine::getTemplate('meta.html');
+        $tpl->setVar('manifestURL', PublicCache::url(Env::getWebmanifestCachePath()));
+        return $tpl;
     }
 
     /**

@@ -27,12 +27,12 @@ class UserController extends Controller
             $tpl->setVars([
                 'body' => AppData::msg()->get()
                     . 'Welcome ' . UserSession::getUser(AppData::usermod())->name
-                    . '<br><a href="' . static::getPath('edit') . '">edit</a>'
-                    . '<br><a href="' . static::getPath('logout') . '">log out</a>',
+                    . '<br><a href="' . static::url('edit') . '">edit</a>'
+                    . '<br><a href="' . static::url('logout') . '">log out</a>',
             ]);
             AppData::htmlPage()->deliver($tpl);
         }
-        HTTP::redirect(static::getPath('login'));
+        HTTP::redirect(static::url('login'));
     }
 
     /**
@@ -45,7 +45,7 @@ class UserController extends Controller
 
         if (UserSession::isAuthenticated()) {
             AppData::msg()->push('Already authenticated', Msg::Success);
-            HTTP::redirect(static::getPath(''));
+            HTTP::redirect(static::url(''));
         }
         $userForm = new UserForm();
         $userForm->setTranslationModule((new Translations())->createI18n(AppData::getLanguage()));
@@ -55,7 +55,7 @@ class UserController extends Controller
             . '<h3 class="mt-0">Sign in</h3>'
             . $userForm->login()
             . '</div>'
-            . '<a href="' . static::getPath('register') . '" class="d-block fs-90 py-md text-center fake-link">New here ? <span>sign up</span></a>';
+            . '<a href="' . static::url('register') . '" class="d-block fs-90 py-md text-center fake-link">New here ? <span>sign up</span></a>';
         $tpl  = Engine::getTemplate('page-single.html')->setVar('body', $body);
         AppData::htmlPage()
             ->setTitle('Sign in to ' . $settings->getTitle())
@@ -74,7 +74,7 @@ class UserController extends Controller
             . '<h3 class="mt-0">Sign up</h3>'
             . $userForm->register()
             . '</div>'
-            . '<a href="' . static::getPath('login') . '" class="d-block fs-90 py-md text-center fake-link">Already have an account ? <span>sign in</span></a>';
+            . '<a href="' . static::url('login') . '" class="d-block fs-90 py-md text-center fake-link">Already have an account ? <span>sign in</span></a>';
         $tpl  = Engine::getTemplate('page-single.html')->setVar('body', $body);
         AppData::htmlPage()
             ->setTitle('Sign up to ' . $settings->getTitle())

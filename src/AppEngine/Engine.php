@@ -2,7 +2,11 @@
 
 namespace Tivins\AppEngine;
 
+use ReflectionClass;
+use ReflectionException;
+use ReflectionMethod;
 use Throwable;
+use Tivins\AppEngine\Cache\PublicCache;
 use Tivins\Core\APIAccess;
 use Tivins\Core\Code\Exception;
 use Tivins\Core\Http\HTTP;
@@ -22,12 +26,23 @@ class Engine
 
     public static function getTemplate(string $name): Tpl
     {
-        $tpl = Tpl::fromFile(Env::getTemplatePath($name), true);
+        $tpl = Tpl::fromFile(Env::getTemplatePath($name), false);
+        $tpl->addIncludeDirectory(Env::path(Env::ENGINE_TPL_DIR));
+        $tpl->addIncludeDirectory(Env::path(Env::DIR_TPL));
         $tpl->setVars([
             'SiteTitle'     => AppData::settings()->getTitle(),
             'SitePunchLine' => AppData::settings()->getPunchLine(),
-            'SiteHomeURL'   => Env::getAbsoluteURL(),
+            'SiteHomeURL'   => Env::url('/', [
+                'absolute'   => true,
+                'prefixLang' => true,
+                'query'      => []
+            ]),
+            'SiteLogo64'    => PublicCache::url(Env::DIR_PUBLIC_CACHE_META . '/' . Meta::getIconName(64)),
+
         ]);
+        foreach ([16, 32, 64, 180] as $size) {
+            $tpl->setVar('SiteIconURL' . $size, PublicCache::url(Env::DIR_PUBLIC_CACHE_META . '/' . Meta::getIconName($size)));
+        }
         // $tpl->addFunction('$name', $callback);
         return $tpl;
     }
@@ -47,35 +62,43 @@ class Engine
         die('Thrown! ' . $exception->getMessage());
     }
 
-    public static function start(string $rootDir)
+    public static function start(string $rootDir): never
     {
         Boot::init($rootDir);
         Engine::run();
     }
 
     /**
+     * Find matching controller from the current URL path.
+     * @throws ReflectionException
      */
-    public static function run()
+    public static function run(): never
     {
         $controllerClass = self::$controllers[QueryString::at(0)] ?? false;
         if (!$controllerClass) {
             self::fatalError('404-1');
         }
-        $controllerReflect = new \ReflectionClass($controllerClass);
+        $controllerReflect = new ReflectionClass($controllerClass);
         if ($controllerReflect->getParentClass()?->getName() !== Controller::class) {
             self::fatalError('401-2');
         }
 
+        QueryString::shift();
+
         try {
-            $method = new \ReflectionMethod($controllerClass, QueryString::at(1) ?: 'index');
-        } catch (\ReflectionException $e) {
+            $method = new ReflectionMethod($controllerClass, QueryString::at(0) ?: 'index');
+        } catch (ReflectionException $e) {
             self::fatalError('404-4');
         }
+
         $attrs = $method->getAttributes(APIAccess::class);
         if (empty($attrs)) {
             self::fatalError('401-3');
         }
-        $method->invoke(null,);
+        QueryString::shift();
+        $method->invoke(null);
+
+        self::fatalError('404-5');
     }
 
     public static function fatalError($code): never
@@ -86,7 +109,7 @@ class Engine
 
     public static function addController(string $class)
     {
-        self::$controllers[trim(constant($class.'::SERVICE'), '/')] = $class;
+        self::$controllers[trim(constant($class . '::SERVICE'), '/')] = $class;
     }
 
     /**

@@ -1,0 +1,48 @@
+/*
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css";
+ */
+
+
+* {
+    box-sizing: border-box
+}
+
+
+
+
+html {
+    line-height: 1.5;
+    font-size: 15px;
+    font-family: "Noto Serif",serif;
+    background: #f6f6f6;
+}
+
+
+body,td,th,select,input,textarea,select,button {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+
+
+
+input {
+    width: 100%;
+    display: block;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    border:1px solid #ccc;
+}
+
+.field {
+    margin: 1rem 0;
+}
+
+a{color:blue;}
+
+.block{
+    border: 1px solid #eee;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    background: #fff;
+}

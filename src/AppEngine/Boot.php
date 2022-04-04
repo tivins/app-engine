@@ -54,7 +54,7 @@ class Boot
         //
         // -- Main process
         //
-        Env::setRootDir($rootDir);
+        Env::init($rootDir);
         $options = self::readSettingsFromCLI($optionsArgs);
 
         // -- Create new Settings and store in AppData,
@@ -66,7 +66,7 @@ class Boot
         // -- Load settings
         //
         $domain = str_replace(['.', ':'], '-', $_SERVER['HTTP_HOST']);
-        $settingsFilename = Env::getPath('/settings/' . $domain . '.settings.php');
+        $settingsFilename = Env::path('/settings/' . $domain . '.settings.php');
         if (! is_readable($settingsFilename)) {
             throw new Exception(
                 "Settings not found",

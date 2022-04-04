@@ -117,6 +117,8 @@ class AppSettings
     private string       $userModuleClass  = UserModule::class;
     private string       $htmlEngineClass  = HTMLPage::class;
     private string       $iconLetter       = 'E';
+    private string       $iconFontPath     = __dir__ . '/../../files/defaults/fonts/ubuntu/UbuntuMono-B.ttf';
+    private float        $iconFontSize     = 300;
     private string       $primaryColor     = '#08c';
     private string       $title            = '';
     private string       $shortTitle       = '';
@@ -383,6 +385,42 @@ class AppSettings
     public function setMailSettings(MailSettings $mailSettings): AppSettings
     {
         $this->mailSettings = $mailSettings;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIconFontPath(): string
+    {
+        return $this->iconFontPath;
+    }
+
+    /**
+     * @param string $iconFontPath
+     * @return AppSettings
+     */
+    public function setIconFontPath(string $iconFontPath): AppSettings
+    {
+        $this->iconFontPath = $iconFontPath;
+        return $this;
+    }
+
+    /**
+     * @return float|int
+     */
+    public function getIconFontSize(): float|int
+    {
+        return $this->iconFontSize;
+    }
+
+    /**
+     * @param float|int $iconFontSize
+     * @return AppSettings
+     */
+    public function setIconFontSize(float|int $iconFontSize): AppSettings
+    {
+        $this->iconFontSize = $iconFontSize;
         return $this;
     }
 

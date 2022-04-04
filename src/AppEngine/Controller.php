@@ -6,8 +6,11 @@ class Controller
 {
     public const SERVICE = '';
 
-    public static function getPath(string $path): string
+    /**
+     * Return the default URL for the service.
+     */
+    public static function url(string $path): string
     {
-        return Env::getURL(static::SERVICE . '/' . ltrim($path, '/'));
+        return Env::url(static::SERVICE . '/' . $path);
     }
 }

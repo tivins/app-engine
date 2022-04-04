@@ -197,12 +197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tivins/php-common.git",
-                "reference": "2ae510a5e857df2ef42e713497921827229c0b11"
+                "reference": "9c2dae4af27172b11efd49da44c50ffcf5419476"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tivins/php-common/zipball/2ae510a5e857df2ef42e713497921827229c0b11",
-                "reference": "2ae510a5e857df2ef42e713497921827229c0b11",
+                "url": "https://api.github.com/repos/tivins/php-common/zipball/9c2dae4af27172b11efd49da44c50ffcf5419476",
+                "reference": "9c2dae4af27172b11efd49da44c50ffcf5419476",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
                 "issues": "https://github.com/tivins/php-common/issues",
                 "source": "https://github.com/tivins/php-common/tree/main"
             },
-            "time": "2022-04-01T12:39:52+00:00"
+            "time": "2022-04-04T12:49:36+00:00"
         },
         {
             "name": "tivins/userpack",
