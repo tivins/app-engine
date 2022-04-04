@@ -1,3 +1,6 @@
+2022-04-04:
+
+* `Engine::addController()` now takes only the class name.
 
 2022-03-26:
 

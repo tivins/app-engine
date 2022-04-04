@@ -84,9 +84,9 @@ class Engine
         HTTP::redirect('/');
     }
 
-    public static function addController(string $name, string $class)
+    public static function addController(string $class)
     {
-        self::$controllers[trim($name, '/')] = $class;
+        self::$controllers[trim(constant($class.'::SERVICE'), '/')] = $class;
     }
 
     /**
