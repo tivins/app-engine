@@ -15,7 +15,7 @@ class Env
     public const DIR_PUBLIC_CACHE_META = '/meta'; // inside PUBLIC_CACHE_PATH
     public const META_WEBMANIFEST      = 'manifest.json'; // inside DIR_PUBLIC_CACHE_META
 
-    public const ENGINE_DIR            = __dir__ . '/../../..';
+    public const ENGINE_DIR            = __dir__ . '/../..';
     public const ENGINE_CSS_DIR        = self::ENGINE_DIR . '/files/defaults/css';
     public const ENGINE_TPL_DIR        = self::ENGINE_DIR . '/files/defaults/html';
 
@@ -74,7 +74,7 @@ class Env
     {
         $path = self::path(self::DIR_TPL . '/' . ltrim($name, '/'));
         if (is_readable($path)) return $path;
-        $path = self::path(self::ENGINE_TPL_DIR . '/' . ltrim($name, '/'));
+        $path = self::ENGINE_TPL_DIR . '/' . ltrim($name, '/');
         if (is_readable($path)) return $path;
         /* @todo throw exception? */
         throw new Exception('Cannot load template', 'cannot load template ' . $name);

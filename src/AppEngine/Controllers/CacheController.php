@@ -56,7 +56,7 @@ class CacheController extends Controller
         if (QueryString::at(0) == 'engine') {
             QueryString::shift();
             $path = QueryString::all();
-            $css = FileSys::loadFile(Env::path(Env::ENGINE_CSS_DIR.'/'.$path));
+            $css = FileSys::loadFile(Env::ENGINE_CSS_DIR.'/'.$path);
             HTTP::send($css, ContentType::CSS);
         }
         $path = QueryString::all();
