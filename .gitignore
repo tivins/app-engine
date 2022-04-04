@@ -2,3 +2,4 @@
 .idea
 /public/
 *.settings.php
+/files/cache

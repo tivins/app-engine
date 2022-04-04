@@ -15,8 +15,9 @@ class Env
     public const DIR_PUBLIC_CACHE_META = '/meta'; // inside PUBLIC_CACHE_PATH
     public const META_WEBMANIFEST      = 'manifest.json'; // inside DIR_PUBLIC_CACHE_META
 
-    public const ENGINE_CSS_DIR        = '/files/defaults/css';
-    public const ENGINE_TPL_DIR        = '/files/defaults/html';
+    public const ENGINE_DIR            = __dir__ . '/../..';
+    public const ENGINE_CSS_DIR        = self::ENGINE_DIR . '/files/defaults/css';
+    public const ENGINE_TPL_DIR        = self::ENGINE_DIR . '/files/defaults/html';
 
     private static string $ROOT_DIR = '';
 
